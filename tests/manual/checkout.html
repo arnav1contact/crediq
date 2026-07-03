@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CredIQ Demo Store Cart</title>
+    <style>
+      :root { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #172033; background: #f7f8fb; }
+      body { margin: 0; }
+      main { max-width: 920px; margin: 40px auto; padding: 0 20px; }
+      h1 { font-size: 28px; margin: 0 0 4px; }
+      p { color: #64748b; margin: 0 0 24px; }
+      .layout { display: grid; grid-template-columns: 1fr 280px; gap: 20px; align-items: start; }
+      .panel { background: white; border: 1px solid #dbe2ea; border-radius: 8px; overflow: hidden; }
+      .item { display: grid; grid-template-columns: 1fr auto auto; gap: 18px; padding: 16px; border-bottom: 1px solid #edf1f5; align-items: center; }
+      .item:last-child { border-bottom: 0; }
+      .name { font-weight: 720; }
+      .meta { color: #64748b; font-size: 13px; margin-top: 3px; }
+      .qty, .price { font-weight: 700; }
+      .summary { padding: 16px; }
+      .paymentMethod { margin-top: 14px; padding-top: 14px; border-top: 1px solid #edf1f5; }
+      .paymentMethod h2 { margin: 0 0 8px; font-size: 14px; }
+      .paymentOption { display: flex; gap: 8px; align-items: center; color: #334155; font-size: 13px; }
+      .summaryRow { display: flex; justify-content: space-between; margin-bottom: 10px; }
+      .total { border-top: 1px solid #edf1f5; padding-top: 10px; font-size: 18px; font-weight: 800; }
+      button { width: 100%; min-height: 40px; border: 0; border-radius: 6px; background: #0f766e; color: white; font-weight: 800; margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>CredIQ Demo Store</h1>
+      <p>Use this fake cart to test item-category recommendations without touching a real checkout.</p>
+      <div class="layout">
+        <section class="panel" aria-label="Cart items">
+          <div class="item" data-crediq-item data-name="Russet potatoes 5 lb bag" data-price="5.00" data-qty="2">
+            <div><div class="name" data-crediq-name>Russet potatoes 5 lb bag</div><div class="meta">Grocery produce</div></div>
+            <div class="qty" data-crediq-qty>2</div>
+            <div class="price" data-crediq-price>$5.00</div>
+          </div>
+          <div class="item" data-crediq-item data-name="Fresh broccoli crowns" data-price="3.50" data-qty="4">
+            <div><div class="name" data-crediq-name>Fresh broccoli crowns</div><div class="meta">Grocery produce</div></div>
+            <div class="qty" data-crediq-qty>4</div>
+            <div class="price" data-crediq-price>$3.50</div>
+          </div>
+          <div class="item" data-crediq-item data-name="Cola soda 12 pack" data-price="8.99" data-qty="4">
+            <div><div class="name" data-crediq-name>Cola soda 12 pack</div><div class="meta">Grocery beverages</div></div>
+            <div class="qty" data-crediq-qty>4</div>
+            <div class="price" data-crediq-price>$8.99</div>
+          </div>
+          <div class="item" data-crediq-item data-name="Whey protein powder vanilla" data-price="29.99" data-qty="3">
+            <div><div class="name" data-crediq-name>Whey protein powder vanilla</div><div class="meta">Health supplement</div></div>
+            <div class="qty" data-crediq-qty>3</div>
+            <div class="price" data-crediq-price>$29.99</div>
+          </div>
+          <div class="item" data-crediq-item data-name="Cold medicine caplets" data-price="11.49" data-qty="1">
+            <div><div class="name" data-crediq-name>Cold medicine caplets</div><div class="meta">Pharmacy</div></div>
+            <div class="qty" data-crediq-qty>1</div>
+            <div class="price" data-crediq-price>$11.49</div>
+          </div>
+          <div class="item" data-crediq-item data-name="Nintendo Switch game" data-price="59.99" data-qty="1">
+            <div><div class="name" data-crediq-name>Nintendo Switch game</div><div class="meta">Entertainment</div></div>
+            <div class="qty" data-crediq-qty>1</div>
+            <div class="price" data-crediq-price>$59.99</div>
+          </div>
+        </section>
+        <aside class="panel summary">
+          <div class="summaryRow"><span>Subtotal</span><strong data-crediq-subtotal>$221.42</strong></div>
+          <div class="summaryRow"><span>Shipping</span><strong>$0.00</strong></div>
+          <div class="summaryRow total"><span>Order total</span><strong>$221.42</strong></div>
+          <div class="paymentMethod" aria-label="Payment method">
+            <h2>Payment method</h2>
+            <label class="paymentOption"><input type="radio" name="payment" checked /> Prime Visa ending in 1001</label>
+          </div>
+          <button>Proceed to checkout</button>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

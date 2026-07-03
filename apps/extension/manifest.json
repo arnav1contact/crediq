@@ -1,0 +1,35 @@
+{
+    "manifest_version":  3,
+    "name":  "CredIQ",
+    "version":  "0.1.0",
+    "description":  "AI-powered credit card recommendations at checkout.",
+    "permissions":  [
+                        "activeTab",
+                        "storage",
+                        "scripting",
+                        "tabs"
+                    ],
+    "host_permissions":  [
+                             "\u003call_urls\u003e",
+                             "http://localhost:8787/*"
+                         ],
+    "action":  {
+                   "default_title":  "CredIQ",
+                   "default_popup":  "src/popup.html"
+               },
+    "background":  {
+                       "service_worker":  "src/background.js",
+                       "type":  "module"
+                   },
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "\u003call_urls\u003e"
+                                            ],
+                                "js":  [
+                                           "src/contentScript.js"
+                                       ],
+                                "run_at":  "document_idle"
+                            }
+                        ]
+}

@@ -1,0 +1,13 @@
+{
+    "name":  "crediq",
+    "version":  "0.1.0",
+    "private":  true,
+    "description":  "AI-powered checkout credit card recommendation extension.",
+    "scripts":  {
+                    "api":  "node apps/api/server.js",
+                    "doctor":  "node scripts/doctor.js"
+                },
+    "engines":  {
+                    "node":  "\u003e=20"
+                }
+}

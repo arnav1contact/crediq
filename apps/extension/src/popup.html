@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>CredIQ</title>
+  </head>
+  <body data-theme="dark">
+    <main>
+      <header>
+        <div>
+          <h1>CredIQ</h1>
+          <p>AI card picks at checkout</p>
+        </div>
+        <div class="headerTools">
+          <button id="themeToggle" class="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+            <span class="themeIcon sun" aria-hidden="true">&#9728;</span>
+            <span class="themeThumb" aria-hidden="true"></span>
+            <span class="themeIcon moon" aria-hidden="true">&#9790;</span>
+          </button>
+          <span id="statusDot" aria-hidden="true"></span>
+        </div>
+      </header>
+
+      <section>
+        <label for="apiUrl">API URL</label>
+        <input id="apiUrl" type="url" value="http://localhost:8787" />
+      </section>
+
+      <section class="toggleRow">
+        <input id="autoAnalyze" type="checkbox" />
+        <label for="autoAnalyze">Auto-analyze likely checkout pages</label>
+      </section>
+
+      <section class="catalogPanel">
+        <label for="issuerSelect">Add popular card</label>
+        <div class="fieldGrid twoWide">
+          <select id="issuerSelect"></select>
+          <select id="cardPreset"></select>
+        </div>
+        <div id="cardPreview" class="cardPreview"></div>
+        <button id="addPreset" type="button" class="danger fullWidth">Add selected card</button>
+      </section>
+      <details class="editorPanel customDetails">
+        <summary>Custom card</summary>
+        <div class="editorBody">
+        <div class="labelRow"><label for="cardName">Card nickname</label><button id="clearCardForm" type="button" class="linkButton">Clear</button></div>
+        <div class="fieldGrid two">
+          <input id="cardName" type="text" placeholder="Nickname, e.g. Amazon card" />
+          <input id="cardLast4" type="text" inputmode="numeric" maxlength="4" placeholder="Last 4" />
+        </div>
+        <div class="fieldGrid two">
+          <input id="cardNetwork" type="text" placeholder="Network" />
+          <input id="cardBaseRate" type="number" min="0" step="0.1" placeholder="Base %" />
+        </div>
+        <div class="ruleBox">
+          <label for="ruleRate">Primary reward rule</label>
+          <input id="ruleName" type="text" placeholder="Rule name, e.g. Groceries" />
+          <div class="fieldGrid two">
+            <select id="ruleCategory">
+              <option value="">Any category</option>
+              <option value="grocery">Grocery</option>
+              <option value="online_shopping">Online shopping</option>
+              <option value="pharmacy">Pharmacy</option>
+              <option value="dining">Dining</option>
+              <option value="gas">Gas</option>
+              <option value="travel">Travel</option>
+              <option value="electronics">Electronics</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="home">Home</option>
+              <option value="clothing">Clothing</option>
+              <option value="warehouse">Warehouse</option>
+            </select>
+            <input id="ruleRate" type="number" min="0" step="0.1" placeholder="Rule %" />
+          </div>
+          <input id="ruleMerchant" type="text" placeholder="Merchant, optional" />
+        </div>
+        <button id="addCustomCard" type="button" class="primary fullWidth">Add custom card</button>
+        </div>
+      </details>
+
+      <section>
+        <div class="labelRow"><label>Wallet</label><span id="walletCount" class="countPill">0 cards</span></div>
+        <div id="walletCards" class="walletCards" aria-live="polite"></div>
+      </section>
+
+      <details class="advancedJson">
+        <summary>Advanced JSON</summary>
+        <section>
+          <div class="labelRow"><label for="wallet">Wallet JSON</label><button id="loadExample" type="button" class="linkButton">Example</button></div>
+          <textarea id="wallet" spellcheck="false" placeholder='[{ "id": "card-1", "name": "My Card", "baseRate": 0.02, "rewardRules": [] }]'></textarea>
+        </section>
+      </details>
+
+      <div class="actions">
+        <button id="save">Save</button>
+        <button id="analyze" class="primary">Analyze checkout</button>
+      </div>
+
+      <p id="message" role="status"></p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
